@@ -42,9 +42,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
-    <Reference Include="websocket-sharp">
-      <HintPath>..\packages\WebSocketSharp.1.0.3-rc9\lib\websocket-sharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreService.cs">
@@ -53,9 +50,7 @@
     <Compile Include="CoreService.Designer.cs">
       <DependentUpon>CoreService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\ChatService.cs" />
     <Compile Include="Core\CoreServer.cs" />
-    <Compile Include="Core\EchoService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
