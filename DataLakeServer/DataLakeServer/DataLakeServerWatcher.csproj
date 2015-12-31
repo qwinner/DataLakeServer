@@ -50,7 +50,6 @@
     <Compile Include="CoreService.Designer.cs">
       <DependentUpon>CoreService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\CoreServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
