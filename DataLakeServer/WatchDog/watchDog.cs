@@ -177,7 +177,6 @@ namespace WatchDog
         {
             enable = false;
         }
-
         public void RestartProcess()
         {
             try
