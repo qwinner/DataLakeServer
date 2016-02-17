@@ -61,7 +61,7 @@ namespace DataServer
             m_sendEventArgs = new SocketAsyncEventArgs();
             m_sendEventArgs.UserToken = this;
             m_receiveBuffer = new DynamicBufferManager(ProtocolConst.InitBufferSize);
-            m_sendBuffer = new AsyncSendBufferManager(ProtocolConst.InitBufferSize); ;
+            m_sendBuffer = new AsyncSendBufferManager(ProtocolConst.InitBufferSize); 
         }
     }
 }

@@ -69,6 +69,25 @@ namespace DataServer
             m_daemonThread = new DaemonThread(this);
         }
 
+        public void Close()
+        {
+            listenSocket.Close();
+            m_daemonThread.Close();
+
+            AsyncSocketUserToken[] userTokenArray = null;
+            AsyncSocketUserTokenList.CopyList(ref userTokenArray);
+            for (int i = 0; i < userTokenArray.Length; i++)
+            {
+                CloseClientSocket(userTokenArray[i]);
+            }
+
+            for(int i = 0; i < m_asyncSocketUserTokenPool.Count; i++)
+            {
+                AsyncSocketUserToken token = m_asyncSocketUserTokenPool.Pop();
+                
+            }
+        }
+
         public void StartAccept(SocketAsyncEventArgs acceptEventArgs)
         {
             if (acceptEventArgs == null)

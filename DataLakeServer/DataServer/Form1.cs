@@ -16,9 +16,24 @@ namespace DataServer
 {
     public partial class Form1 : Form
     {
+        CoreService sr;
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            sr= new CoreService();
+            sr.Init();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (sr != null)
+            {
+                sr.Close();
+            }
         }
 
     }

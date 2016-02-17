@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace DataServer
 {
-    public static class CoreService
+    public  class CoreService
     {
         public static ILog Logger;
         public static string FileDirectory;
         public static AsyncSocketServer AsyncSocketSvr;
 
         
-        public static void Init()
+        public  void Init()
         {
             DateTime currentTime = DateTime.Now;
             log4net.GlobalContext.Properties["LogDir"] = currentTime.ToString("yyyyMM");
@@ -47,6 +47,14 @@ namespace DataServer
             AsyncSocketSvr.Init();
             IPEndPoint listenPoint = new IPEndPoint(IPAddress.Parse("0.0.0.0"), port);
             AsyncSocketSvr.Start(listenPoint);
+        }
+
+        public  void Close()
+        {
+            if (AsyncSocketSvr != null)
+            {
+                AsyncSocketSvr.Close();
+            }
         }
     }
 }
