@@ -27,7 +27,7 @@ namespace DataServer
                 tmpStr = m_protocolText[0];
                 for (int i = 1; i < m_protocolText.Count; i++)
                 {
-                    tmpStr = tmpStr + ProtocolKey.ReturnWrap + m_protocolText[i];
+                    tmpStr = tmpStr + ProtocolKey.ReturnWrap + m_protocolText[i];//换行符作为分隔符号，多个命令。
                 }
             }
             return tmpStr;
@@ -35,22 +35,22 @@ namespace DataServer
 
         public void AddRequest()
         {
-            m_protocolText.Add(ProtocolKey.LeftBrackets + ProtocolKey.Request + ProtocolKey.RightBrackets);
+            m_protocolText.Add(ProtocolKey.LeftBrackets + ProtocolKey.Request + ProtocolKey.RightBrackets);//[Request]
         }
 
         public void AddResponse()
         {
-            m_protocolText.Add(ProtocolKey.LeftBrackets + ProtocolKey.Response + ProtocolKey.RightBrackets);
+            m_protocolText.Add(ProtocolKey.LeftBrackets + ProtocolKey.Response + ProtocolKey.RightBrackets);//[Response]
         }
 
         public void AddCommand(string commandKey)
         {
-            m_protocolText.Add(ProtocolKey.Command + ProtocolKey.EqualSign + commandKey);
+            m_protocolText.Add(ProtocolKey.Command + ProtocolKey.EqualSign + commandKey);//Command=
         }
 
         public void AddSuccess()
         {
-            m_protocolText.Add(ProtocolKey.Code + ProtocolKey.EqualSign + ProtocolCode.Success.ToString());
+            m_protocolText.Add(ProtocolKey.Code + ProtocolKey.EqualSign + ProtocolCode.Success.ToString());//Code=0
         }
 
         public void AddFailure(int errorCode, string message)

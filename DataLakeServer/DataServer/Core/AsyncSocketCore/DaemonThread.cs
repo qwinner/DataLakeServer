@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
+///检测socket中线程，如果超时未处理，就关闭连接。
 namespace DataServer
 {
     class DaemonThread : Object
