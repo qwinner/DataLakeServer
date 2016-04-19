@@ -21,8 +21,9 @@ namespace DataServer
         
         public  void Init()
         {
+
             DateTime currentTime = DateTime.Now;
-            log4net.GlobalContext.Properties["LogDir"] = currentTime.ToString("yyyyMM");
+            log4net.GlobalContext.Properties["LogDir"] = "111";// currentTime.ToString("yyyyMM");
             log4net.GlobalContext.Properties["LogFileName"] = "_SocketAsyncServer" + currentTime.ToString("yyyyMMdd");
             Logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -32,6 +33,7 @@ namespace DataServer
                 FileDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Files");
             if (!Directory.Exists(FileDirectory))
                 Directory.CreateDirectory(FileDirectory);
+
             int port = 0;
             if (!(int.TryParse(config.AppSettings.Settings["Port"].Value, out port)))
                 port = 9999;
@@ -45,7 +47,7 @@ namespace DataServer
             AsyncSocketSvr = new AsyncSocketServer(parallelNum);
             AsyncSocketSvr.SocketTimeOutMS = socketTimeOutMS;
             AsyncSocketSvr.Init();
-            IPEndPoint listenPoint = new IPEndPoint(IPAddress.Parse("0.0.0.0"), port);
+            IPEndPoint listenPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             AsyncSocketSvr.Start(listenPoint);
         }
 

@@ -18,6 +18,8 @@ namespace DataServer
         public int SocketTimeOutMS { get { return m_socketTimeOutMS; } set { m_socketTimeOutMS = value; } }
                
         private AsyncSocketUserTokenPool m_asyncSocketUserTokenPool;
+        
+        //用来你检测僵尸线程
         private AsyncSocketUserTokenList m_asyncSocketUserTokenList;
         public AsyncSocketUserTokenList AsyncSocketUserTokenList { get { return m_asyncSocketUserTokenList; } }
 
@@ -71,21 +73,7 @@ namespace DataServer
 
         public void Close()
         {
-            listenSocket.Close();
             m_daemonThread.Close();
-
-            AsyncSocketUserToken[] userTokenArray = null;
-            AsyncSocketUserTokenList.CopyList(ref userTokenArray);
-            for (int i = 0; i < userTokenArray.Length; i++)
-            {
-                CloseClientSocket(userTokenArray[i]);
-            }
-
-            for(int i = 0; i < m_asyncSocketUserTokenPool.Count; i++)
-            {
-                AsyncSocketUserToken token = m_asyncSocketUserTokenPool.Pop();
-                
-            }
         }
 
         public void StartAccept(SocketAsyncEventArgs acceptEventArgs)
