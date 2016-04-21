@@ -73,7 +73,6 @@ namespace DataServer
 
         public bool SendResponse()
         {
-            m_logFixedBuffer.WriteString("\r\nNET IOCP Demo Server, SQLDebug_Fan fansheng_hx@163.com, http://blog.csdn.net/SQLDebug_Fan\r\n");
             m_logFixedBuffer.WriteString("Press ESC to exit\r\n");
             return InitiativeSend();
         }

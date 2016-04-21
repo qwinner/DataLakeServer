@@ -23,7 +23,7 @@ namespace DataServer
         {
 
             DateTime currentTime = DateTime.Now;
-            log4net.GlobalContext.Properties["LogDir"] = "111";// currentTime.ToString("yyyyMM");
+            log4net.GlobalContext.Properties["LogDir"] = currentTime.ToString("yyyyMM");
             log4net.GlobalContext.Properties["LogFileName"] = "_SocketAsyncServer" + currentTime.ToString("yyyyMMdd");
             Logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
